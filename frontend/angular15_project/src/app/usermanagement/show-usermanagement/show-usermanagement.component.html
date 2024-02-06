@@ -14,7 +14,7 @@
                     (click)="closeClick()"></button>
             </div>
             <div class="modal-body">
-                <app-add-edit-usermanagement [usermanag]="usermanag" *ngIf="ActivateAddEditUserComp">
+                <app-add-edit-usermanagement [usermanag]="usermanag" *ngIf="ActivateAddEditUserComp" (closeModal)="closeClick()">
                 </app-add-edit-usermanagement>
             </div>
 
