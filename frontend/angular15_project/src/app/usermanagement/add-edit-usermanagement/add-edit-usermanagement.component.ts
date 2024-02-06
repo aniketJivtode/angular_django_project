@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 export class AddEditUsermanagementComponent implements OnInit {
 
   constructor(private service: SharedService) { }
-
+  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
   @Input() usermanag: any;
   id?: number;
@@ -46,6 +46,7 @@ export class AddEditUsermanagementComponent implements OnInit {
       password: this.password,
     };
     this.service.addUserProfile(val).subscribe(res => {
+      this.closeModal.emit();
       alert(res.toString());
     });
   }
